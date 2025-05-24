@@ -29,18 +29,19 @@ async function autenticarAdministrador(usuario, clave) {
     const result = await request.execute('sp_ObtenerHashAdministrador');
 
     if (result.recordset.length === 0) {
-      return {esValido: false };
+      return { esValido: false };
     }
 
-    const {clave: hashAlmacenado, rol} = result.recordset[0];
+    const { clave: claveAlmacenada, rol } = result.recordset[0];
 
-    const esValido = await bcrypt.compare(clave, hashAlmacenado);
+    const esValido = clave === claveAlmacenada;
 
-    return {esValido, rol};
+    return { esValido, rol: esValido ? rol : null };
   } catch (err) {
     throw new Error('Error al autenticar: ' + err.message);
   }
 }
+
 
 module.exports = {
   registrarAdministrador,
