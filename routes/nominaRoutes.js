@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const nominaController = require('../controller/nominaController');
 
-router.post('/', nominaController.insertarNomina);
+router.get('/insNomina', nominaController.insertarNomina);
 router.get('/', nominaController.obtenerTodasNominas);
 router.get('/empleado/:id', nominaController.obtenerNominasPorEmpleado);
 

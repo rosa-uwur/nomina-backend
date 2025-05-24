@@ -9,6 +9,7 @@ async function insertarEmpleado(data) {
   request.input('salario_base', sql.Decimal(10, 2), data.salario_base);
   request.input('fecha_ingreso', sql.Date, data.fecha_ingreso);
   request.input('estado', sql.VarChar(20), data.estado);
+  request.input('tipo_periodo', sql.VarChar(20), data.tipo_periodo);
   await request.execute('sp_InsertarEmpleado');
 }
 

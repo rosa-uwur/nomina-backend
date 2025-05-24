@@ -1,9 +1,9 @@
 const nominaModel = require('../model/nominaModel');
 
+
 async function insertarNomina(req, res) {
   try {
-    const data = req.body;
-    const resultado = await nominaModel.insertarNomina(data);
+    const resultado = await nominaModel.insertarNomina(); // sin argumentos
     res.status(201).json({
       mensaje: 'Nómina generada exitosamente',
       detalle: resultado
@@ -15,6 +15,7 @@ async function insertarNomina(req, res) {
     });
   }
 }
+
 
 async function obtenerTodasNominas(req, res) {
   try {
